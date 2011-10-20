@@ -8,15 +8,20 @@ import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity {
     
-	protected VehiclesListFragment vlf;  
+	private VehiclesListFragment vlf;  
+	private VehicleDamageWaiverFragment vdf; 
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
+        // Get the fragments so we can work with them. 
         vlf = (VehiclesListFragment)getSupportFragmentManager().findFragmentById(R.id.vehicles);
+        vdf = (VehicleDamageWaiverFragment)getSupportFragmentManager().findFragmentById(R.id.damage_waiver); 
         
+        // Set the waiver as the listener. 
+        vlf.setVechicleListner(vdf);
     }
     
     @Override

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
@@ -8,8 +7,17 @@
 	<fragment 
 		class="com.agilevent.repairshop.VehiclesListFragment"
 		android:id="@+id/vehicles"
-		android:layout_width="fill_parent"
+		android:layout_width="0dp"
+		android:layout_weight="3"
 		android:layout_height="fill_parent"
 		/>		
-		
+
+	<fragment 
+		class="com.agilevent.repairshop.VehicleDamageWaiverFragment"
+		android:id="@+id/damage_waiver"
+		android:layout_width="0dp"
+		android:layout_weight="7"
+		android:layout_height="fill_parent"
+		/>
+	
 </LinearLayout>
