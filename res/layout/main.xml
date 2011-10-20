@@ -4,9 +4,13 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
+	
+	<fragment 
+		class="com.agilevent.repairshop.VehiclesListFragment"
+		android:id="@+id/vehicles"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		/>		
+	
+	
 </LinearLayout>

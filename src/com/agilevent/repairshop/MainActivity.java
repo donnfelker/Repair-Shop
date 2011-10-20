@@ -1,10 +1,10 @@
 package com.agilevent.repairshop;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 
-public class MainActivity extends Activity {
-    /** Called when the activity is first created. */
+public class MainActivity extends FragmentActivity {
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
