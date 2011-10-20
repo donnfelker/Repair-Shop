@@ -2,5 +2,8 @@
 <resources>
     <string name="hello">Hello World, MainActivity!</string>
     <string name="app_name">Repair Shop</string>
+    <string name="about">About</string>
+    <string name="reset">Reset</string>
+    <string name="about_content">An app made during tablet programming class!</string>
 
 </resources>

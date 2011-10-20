@@ -2,7 +2,9 @@ package com.agilevent.repairshop;
 
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 
 public class VehiclesListFragment extends ListFragment {
@@ -15,11 +17,25 @@ public class VehiclesListFragment extends ListFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
+		initializeAdapter(); 
+		
+		
+		
+	}
+
+	private void initializeAdapter() {
 		String[] vehicles = new String[] { CAR, SUV, TRUCK};
 		
 		ArrayAdapter<String> vehiclesAdapter = new ArrayAdapter<String>( getActivity(), android.R.layout.simple_list_item_1, vehicles );
 	    
 		setListAdapter(vehiclesAdapter);
+		
+	}
+
+	public void reset() {
+		initializeAdapter(); 
+		
+		Toast.makeText(getActivity(), getString(R.string.reset), Toast.LENGTH_SHORT).show(); 
 		
 	}
 
