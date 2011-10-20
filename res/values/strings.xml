@@ -5,5 +5,7 @@
     <string name="about">About</string>
     <string name="reset">Reset</string>
     <string name="about_content">An app made during tablet programming class!</string>
+    <string name="save">Save</string>
+    <string name="waiver_saved">The waiver has been saved to %s.</string>
 
 </resources>
