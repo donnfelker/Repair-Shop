@@ -21,7 +21,7 @@ public class MainActivity extends FragmentActivity {
         vdf = (VehicleDamageWaiverFragment)getSupportFragmentManager().findFragmentById(R.id.damage_waiver); 
         
         // Set the waiver as the listener. 
-        vlf.setVechicleListner(vdf);
+        vlf.setVechicleListener(vdf);
     }
     
     @Override
