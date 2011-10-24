@@ -48,7 +48,7 @@ public class VehiclesListFragment extends ListFragment {
 		Toast.makeText(getActivity(), getString(R.string.reset), Toast.LENGTH_SHORT).show(); 
 	}
 
-	public void setVechicleListner(VehicleSelected vehicleSelected) {
+	public void setVechicleListener(VehicleSelected vehicleSelected) {
 		this.vehicleSelected = vehicleSelected; 
 	}
 	
