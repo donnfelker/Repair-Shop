@@ -32,7 +32,7 @@ public class MainActivity extends FragmentActivity {
     			Toast.makeText(this, getString(R.string.about_content), Toast.LENGTH_LONG).show(); 
     			return true; 
     		case R.id.reset:
-    			vlf.reset(); 
+    			// To be implemented in this lab. 
     			return true;
     		default: 
     			return super.onOptionsItemSelected(item);
