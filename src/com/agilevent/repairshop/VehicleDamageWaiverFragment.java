@@ -15,10 +15,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import com.google.inject.Inject;
+import roboguice.event.EventListener;
+import roboguice.event.EventManager;
+import roboguice.fragment.RoboFragment;
 
-public class VehicleDamageWaiverFragment extends Fragment implements VehicleSelected {
+public class VehicleDamageWaiverFragment extends RoboFragment {
 
-	private SignatureView waiverView; 
+	protected SignatureView waiverView;
+
+    @Inject protected EventManager eventManager;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +35,6 @@ public class VehicleDamageWaiverFragment extends Fragment implements VehicleSele
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		 
 		
 		waiverView = (SignatureView)getView().findViewById(R.id.vehicle);
 		waiverView.setDrawingCacheEnabled(true);
@@ -66,6 +71,13 @@ public class VehicleDamageWaiverFragment extends Fragment implements VehicleSele
 				 }
 			}
 		});
+
+        eventManager.registerObserver(VehicleSelectedEvent.class, new EventListener<VehicleSelectedEvent>() {
+            @Override
+            public void onEvent(VehicleSelectedEvent event) {
+                OnVehicleSelected(event.getVehicle());
+            }
+        });
 	}
 	
 	@Override

@@ -7,31 +7,36 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.google.inject.Inject;
+import roboguice.event.EventListener;
+import roboguice.event.EventManager;
+import roboguice.fragment.RoboListFragment;
 
 
-public class VehiclesListFragment extends ListFragment {
+public class VehiclesListFragment extends RoboListFragment {
 
 	private static final String CAR = "Car";
 	private static final String SUV = "SUV";
 	private static final String TRUCK = "Truck";
-	private VehicleSelected vehicleSelected;
+
+    @Inject protected EventManager eventManager;
 	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		
 		initializeAdapter(); 
-		
+
 	}
-	
+
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		
+
 		// Get the vehicle that they selected (in this case its a string)
 		String vehicle = l.getItemAtPosition(position).toString(); 
 		
-		// Notify the listener (the damage waiver)
-		vehicleSelected.OnVehicleSelected(vehicle); 
+		// Notify the event bus.
+		eventManager.fire(new VehicleSelectedEvent(vehicle));
 	}
 
 	private void initializeAdapter() {
@@ -44,13 +49,8 @@ public class VehiclesListFragment extends ListFragment {
 
 	public void reset() {
 		initializeAdapter(); 
-		vehicleSelected.OnVehicleSelected("");
+		eventManager.fire(new VehicleSelectedEvent(""));
 		Toast.makeText(getActivity(), getString(R.string.reset), Toast.LENGTH_SHORT).show(); 
 	}
-
-	public void setVechicleListener(VehicleSelected vehicleSelected) {
-		this.vehicleSelected = vehicleSelected; 
-	}
-	
 
 }

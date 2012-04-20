@@ -5,23 +5,19 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+import com.google.inject.Inject;
+import roboguice.activity.RoboFragmentActivity;
+import roboguice.event.EventManager;
+import roboguice.inject.InjectFragment;
 
-public class MainActivity extends FragmentActivity {
-    
-	private VehiclesListFragment vlf;  
-	private VehicleDamageWaiverFragment vdf; 
-	
+public class MainActivity extends RoboFragmentActivity {
+
+    @Inject protected EventManager eventManager;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
-        // Get the fragments so we can work with them. 
-        vlf = (VehiclesListFragment)getSupportFragmentManager().findFragmentById(R.id.vehicles);
-        vdf = (VehicleDamageWaiverFragment)getSupportFragmentManager().findFragmentById(R.id.damage_waiver); 
-        
-        // Set the waiver as the listener. 
-        vlf.setVechicleListener(vdf);
     }
     
     @Override
@@ -37,7 +33,7 @@ public class MainActivity extends FragmentActivity {
     			Toast.makeText(this, getString(R.string.about_content), Toast.LENGTH_LONG).show(); 
     			return true; 
     		case R.id.reset:
-    			vlf.reset(); 
+                eventManager.fire(new ResetEvent());
     			return true;
     		default: 
     			return super.onOptionsItemSelected(item);
